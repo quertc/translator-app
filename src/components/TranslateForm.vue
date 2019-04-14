@@ -26,7 +26,7 @@ export default {
     .then(response => {
       this.availablelanguages = response.body.langs;
     })
-    .catch(error => {
+    .catch(() => {
       this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console');
       console.error(`An error occurred while searching for available languages ↑`);
     })
@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style scoped>
-
 .form {
   display: grid;
   grid-gap: 12px;
@@ -65,8 +64,8 @@ export default {
   outline: none;
   font-size: .9em;
   border: none;
-  border-bottom: 1px solid rgb(63,63,63);
-  color: rgb(51,51,51);
+  border-bottom: 1px solid rgb(63, 63, 63);
+  color: rgb(51, 51, 51);
 }
 
 .form__textarea::placeholder {
@@ -80,7 +79,7 @@ export default {
   cursor: pointer;
   padding: 5px;
   outline: none;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
 }
 
 .form__submit {
@@ -92,15 +91,14 @@ export default {
   background: none;
   outline: none;
   padding: 7.5px;
-  border: 1px solid rgb(63,63,63);
+  border: 1px solid rgb(63, 63, 63);
   border-radius: 7.5px;
   transition: background-color .5s, color .5s;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
 }
 
 .form__submit:hover {
-  background-color: rgb(63,63,63);
+  background-color: rgb(63, 63, 63);
   color: rgb(255, 255, 255);
 }
-
 </style>

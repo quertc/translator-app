@@ -28,20 +28,18 @@ export default {
       .then(response => {
         this.translatedText = response.body.text[0];  
       })
-      .catch(error => {
+      .catch(() => {
         this.translatedText = 'An error occurred while translating the text. Details in the browser console';
       });
     },
     errorHandling(errorText) {
-      this.translatedText = 'An error occurred while searching for available languages. Details in the browser console';
+      this.translatedText = errorText;
     }
   }
 };
-
 </script>
 
 <style scoped>
-
 #app {
   font-family: 'Montserrat';
   display: grid;
@@ -51,15 +49,14 @@ export default {
 h1 {
   margin-bottom: 0;
   font-size: 1.4em;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
 }
 
 h4 {
   margin-top: 10px;
   margin-bottom: 26px;
   font-size: .9em;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
   font-weight: 400;
 }
-
 </style>
