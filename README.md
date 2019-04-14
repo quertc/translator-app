@@ -19,17 +19,17 @@ This app is made on Vue.js using the Vue CLI 3 development tool.
 
 After these steps, you can use these commands:
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+#### Lints and fixes files
 ```
 npm run lint
 ```
