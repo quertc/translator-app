@@ -1,0 +1,65 @@
+<template>
+  <div id="app">
+    <h1>Translator App</h1>
+    <h4>Powered By Vue.js and Yandex API</h4>
+    <TranslateForm @formSubmit="translateText" @showError="errorHandling"></TranslateForm>
+    <TranslateOutput v-text="translatedText"></TranslateOutput>
+  </div>
+</template>
+
+<script>
+import TranslateForm from './components/TranslateForm.vue';
+import TranslateOutput from './components/TranslateOutput.vue';
+
+export default {
+  name: 'app',
+  components: {
+    TranslateForm,
+    TranslateOutput
+  },
+  data() {
+    return {
+      translatedText: ''
+    };
+  },
+  methods: {
+    translateText(text, language) {
+      this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${process.env.VUE_APP_SECRET}&lang=${language}&text=${text}`)
+      .then(response => {
+        this.translatedText = response.body.text[0];  
+      })
+      .catch(error => {
+        this.translatedText = 'An error occurred while translating the text. Details in the browser console';
+      });
+    },
+    errorHandling(errorText) {
+      this.translatedText = 'An error occurred while searching for available languages. Details in the browser console';
+    }
+  }
+};
+
+</script>
+
+<style scoped>
+
+#app {
+  font-family: 'Montserrat';
+  display: grid;
+  justify-items: center;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 1.4em;
+  color: rgb(51,51,51);
+}
+
+h4 {
+  margin-top: 10px;
+  margin-bottom: 26px;
+  font-size: .9em;
+  color: rgb(51,51,51);
+  font-weight: 400;
+}
+
+</style>
