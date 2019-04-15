@@ -3,7 +3,7 @@
     <h1>Translator App</h1>
     <h4>Powered By Vue.js and Yandex API</h4>
     <TranslateForm @formSubmit="translateText" @showError="errorHandling"></TranslateForm>
-    <TranslateOutput v-text="translatedText"></TranslateOutput>
+    <TranslateOutput :output="translatedText"></TranslateOutput>
   </div>
 </template>
 

@@ -28,7 +28,6 @@ export default {
     })
     .catch(() => {
       this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console');
-      console.error(`An error occurred while searching for available languages ↑`);
     })
   },
   methods: {

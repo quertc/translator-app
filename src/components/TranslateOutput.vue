@@ -1,11 +1,11 @@
 <template>
-  <span class="translatedText">{{ translatedText }}</span>
+  <span class="translatedText">{{ output }}</span>
 </template>
 
 <script>
 export default {
   name: 'translateOutput',
-  props: ['translatedText']
+  props: ['output']
 };
 </script>
 
