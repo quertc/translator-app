@@ -46,7 +46,7 @@ export default {
   box-shadow: 0 .5rem 4rem rgba(0, 0, 0, .06);
   padding: 25px;
   border-radius: 7px;
-  transition: box-shadow .6s ease;
+  transition: box-shadow .45s;
   cursor: pointer;
 }
 
@@ -92,7 +92,7 @@ export default {
   padding: 7.5px;
   border: 1px solid rgb(63, 63, 63);
   border-radius: 7.5px;
-  transition: background-color .5s, color .5s;
+  transition: background-color .45s, color .45s;
   color: rgb(51, 51, 51);
 }
 

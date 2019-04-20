@@ -30,6 +30,7 @@ export default {
         this.translatedText = response.body.text[0];  
       })
       .catch(() => {
+        this.isError = true;
         this.translatedText = 'An error occurred while translating the text. Details in the browser console';
       });
     },
