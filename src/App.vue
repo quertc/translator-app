@@ -3,7 +3,7 @@
     <h1>Translator App</h1>
     <h4>Powered By Vue.js and Yandex API</h4>
     <TranslateForm @formSubmit="translateText" @showError="errorHandling"></TranslateForm>
-    <TranslateOutput :output="translatedText"></TranslateOutput>
+    <TranslateOutput :output="translatedText" :class="{error: isError}"></TranslateOutput>
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   },
   data() {
     return {
-      translatedText: ''
+      translatedText: '',
+      isError: false
     };
   },
   methods: {
@@ -33,6 +34,7 @@ export default {
       });
     },
     errorHandling(errorText) {
+      this.isError = true;
       this.translatedText = errorText;
     }
   }
@@ -58,5 +60,9 @@ h4 {
   font-size: .9em;
   color: rgb(51, 51, 51);
   font-weight: 400;
+}
+
+.error {
+  color: rgb(240, 0, 0);
 }
 </style>
