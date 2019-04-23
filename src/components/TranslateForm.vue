@@ -3,7 +3,7 @@
     <form class="form" @submit.prevent="formSubmit">
       <textarea class="form__textarea" v-model="textToTranslate" placeholder="Введите текст ..." required></textarea>
       <select class="form__select" v-model="language" required>
-        <option v-for="(language, code, index) of availablelanguages" v-bind:value="code" :key="index">{{ language }}</option>
+        <option v-for="(language, code, index) of availablelanguages" :value="code" :key="index">{{ language }}</option>
       </select>
       <input class="form__submit" type="submit" value="Translate">
     </form>   
