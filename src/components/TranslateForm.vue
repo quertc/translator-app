@@ -43,15 +43,15 @@ export default {
   display: grid;
   grid-gap: 12px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 .5rem 4rem rgba(0, 0, 0, .06);
+  box-shadow: 0 0.5rem 4rem rgba(0, 0, 0, 0.06);
   padding: 25px;
   border-radius: 7px;
-  transition: box-shadow .45s;
+  transition: box-shadow 0.45s;
   cursor: pointer;
 }
 
 .form:hover {
-  box-shadow: 0 .5rem  1rem rgba(0, 0, 0, .14);
+  box-shadow: 0 0.5rem  1rem rgba(0, 0, 0, 0.14);
 }
 
 .form__textarea {
@@ -61,7 +61,7 @@ export default {
   resize: vertical;
   padding: 3px;
   outline: none;
-  font-size: .9em;
+  font-size: 0.9em;
   border: none;
   border-bottom: 1px solid rgb(63, 63, 63);
   color: rgb(51, 51, 51);
@@ -92,7 +92,7 @@ export default {
   padding: 7.5px;
   border: 1px solid rgb(63, 63, 63);
   border-radius: 7.5px;
-  transition: background-color .45s, color .45s;
+  transition: background-color 0.45s, color 0.45s;
   color: rgb(51, 51, 51);
 }
 

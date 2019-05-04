@@ -58,7 +58,7 @@ h1 {
 h4 {
   margin-top: 10px;
   margin-bottom: 26px;
-  font-size: .9em;
+  font-size: 0.9em;
   color: rgb(51, 51, 51);
   font-weight: 400;
 }
