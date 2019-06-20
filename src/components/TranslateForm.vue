@@ -51,11 +51,11 @@ export default {
 }
 
 .form:hover {
-  box-shadow: 0 0.5rem  1rem rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.14);
 }
 
 .form__textarea {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   height: 30px;
   line-height: 30px;
   resize: vertical;
@@ -72,7 +72,7 @@ export default {
 }
 
 .form__select {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   text-align: center;
   border: none;
   cursor: pointer;
@@ -82,7 +82,7 @@ export default {
 }
 
 .form__submit {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   cursor: pointer;
   display: flex;
   justify-content: center;

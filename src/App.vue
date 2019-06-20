@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 #app {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   display: grid;
   justify-items: center;
 }
