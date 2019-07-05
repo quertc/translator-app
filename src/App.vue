@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Translator App</h1>
-    <h4>Powered By Vue.js and Yandex API</h4>
+    <h4>Powered by Vue.js and Yandex API</h4>
     <TranslateForm @formSubmit="translateText" @showError="errorHandling"></TranslateForm>
     <TranslateOutput :output="translatedText" :class="{error: isError}"></TranslateOutput>
   </div>
@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 #app {
-  font-family: "Montserrat";
+  font-family: Montserrat, Arial, sans-serif;
   display: grid;
   justify-items: center;
 }
