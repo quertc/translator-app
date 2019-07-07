@@ -31,7 +31,7 @@ export default {
       })
       .catch(() => {
         this.isError = true;
-        this.translatedText = 'An error occurred while translating the text. Details in the browser console';
+        this.translatedText = 'An error occurred while translating the text. Details in the browser console.';
       });
     },
     errorHandling(errorText) {
@@ -42,9 +42,12 @@ export default {
 };
 </script>
 
-<style scoped>
-#app {
+<style>
+* {
   font-family: Montserrat, Arial, sans-serif;
+}
+
+#app {
   display: grid;
   justify-items: center;
 }
@@ -63,7 +66,7 @@ h4 {
   font-weight: 400;
 }
 
-.error {
+#app .error {
   color: rgb(240, 0, 0);
 }
 </style>

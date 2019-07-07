@@ -28,7 +28,7 @@ export default {
       this.availablelanguages = response.body.langs;
     })
     .catch(() => {
-      this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console');
+      this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console.');
     })
   },
   methods: {
@@ -44,7 +44,7 @@ export default {
   display: grid;
   grid-gap: 12px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 0.5rem 4rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0.5rem 4rem rgba(0, 0, 0, 0.068);
   padding: 25px;
   border-radius: 7px;
   transition: box-shadow 0.55s;
@@ -52,11 +52,10 @@ export default {
 }
 
 .form:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.088);
 }
 
 .form__textarea {
-  font-family: Montserrat, Arial, sans-serif;
   height: 30px;
   line-height: 30px;
   resize: vertical;
@@ -69,12 +68,11 @@ export default {
 }
 
 .form__textarea::placeholder {
-  color: rgb(51, 51, 51);
-  opacity: 0.93;
+  color: rgb(54, 54, 54);
+  opacity: 0.9;
 }
 
 .form__select {
-  font-family: Montserrat, Arial, sans-serif;
   text-align: center;
   border: none;
   cursor: pointer;
@@ -84,7 +82,6 @@ export default {
 }
 
 .form__submit {
-  font-family: Montserrat, Arial, sans-serif;
   cursor: pointer;
   display: flex;
   justify-content: center;

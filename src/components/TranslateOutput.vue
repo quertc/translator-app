@@ -11,6 +11,7 @@ export default {
 
 <style scoped>
 .translatedText {
+  text-align: center;
   max-width: 768px;
   padding: 0 2px 0 2px;
   margin-top: 45px;
