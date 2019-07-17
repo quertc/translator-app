@@ -1,11 +1,16 @@
 <template>
-  <span class="translatedText">{{ output }}</span>
+  <span class="translatedText">{{ outputText }}</span>
 </template>
 
 <script>
 export default {
-  name: 'translateOutput',
-  props: ['output']
+  name: 'TranslateOutput',
+  props: {
+    outputText: {
+      type: String,
+      required: true
+    }
+  }
 };
 </script>
 

@@ -1,31 +1,30 @@
 <template>
-  <div id="translateForm">   
+  <div>   
     <form class="form" @submit.prevent="formSubmit">
       <textarea class="form__textarea" v-model="textToTranslate" placeholder="Enter text" required></textarea>
       <select class="form__select" v-model="language" required>
-        <option value="select" disabled>Select a language</option>
-        <option v-for="(language, code, index) of availablelanguages" :value="code" :key="index">{{ language }}</option>
+        <option value="" disabled>Select a language</option>
+        <option v-for="(language, code, index) of availableLanguages" :value="code" :key="index">{{ language }}</option>
       </select>
       <input class="form__submit" type="submit" value="Translate">
-    </form>   
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'translateForm',
+  name: 'TranslateForm',
   data() {
     return {
       textToTranslate: '',
-      availablelanguages: {},
+      availableLanguages: {},
       language: ''
     };
   },
   created() {
-    this.language = 'select';
     this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${process.env.VUE_APP_SECRET}&ui=en`)
     .then(response => {
-      this.availablelanguages = response.body.langs;
+      this.availableLanguages = response.body.langs;
     })
     .catch(() => {
       this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console.');

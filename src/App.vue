@@ -2,17 +2,17 @@
   <div id="app">
     <h1>Translator App</h1>
     <h4>Powered by Vue.js and Yandex API</h4>
-    <TranslateForm @formSubmit="translateText" @showError="errorHandling"></TranslateForm>
-    <TranslateOutput :output="translatedText" :class="{error: isError}"></TranslateOutput>
+    <TranslateForm @formSubmit="translateText" @showError="errorHandling"/>
+    <TranslateOutput :outputText="translatedText" :class="{error: isError}"/>
   </div>
 </template>
 
 <script>
-import TranslateForm from './components/TranslateForm.vue';
-import TranslateOutput from './components/TranslateOutput.vue';
+import TranslateForm from '@/components/TranslateForm.vue';
+import TranslateOutput from '@/components/TranslateOutput.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     TranslateForm,
     TranslateOutput
