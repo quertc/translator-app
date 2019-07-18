@@ -1,7 +1,7 @@
 <template>
   <div>   
-    <form class="form" @submit.prevent="formSubmit">
-      <textarea class="form__textarea" v-model="textToTranslate" placeholder="Enter text" required></textarea>
+    <form class="form" @submit.prevent="$emit('form-submit', textToTranslate, language)">
+      <textarea class="form__textarea" v-model.trim="textToTranslate" placeholder="Enter text" required></textarea>
       <select class="form__select" v-model="language" required>
         <option value="" disabled>Select a language</option>
         <option v-for="(language, code, index) of availableLanguages" :value="code" :key="index">{{ language }}</option>
@@ -27,13 +27,8 @@ export default {
       this.availableLanguages = response.body.langs;
     })
     .catch(() => {
-      this.$emit('showError', 'An error occurred while searching for available languages. Details in the browser console.');
+      this.$emit('show-error', 'An error occurred while searching for available languages. Details in the browser console.');
     })
-  },
-  methods: {
-    formSubmit() {
-      this.$emit('formSubmit', this.textToTranslate, this.language);
-    }
   }
 };
 </script>
