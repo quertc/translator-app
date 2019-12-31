@@ -17,17 +17,15 @@ export default {
     TranslateForm,
     TranslateOutput
   },
-  data() {
-    return {
-      translatedText: '',
-      isError: false
-    };
-  },
+  data: () => ({
+    translatedText: '',
+    isError: false
+  }),
   methods: {
     translateText(text, language) {
       this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${process.env.VUE_APP_SECRET}&lang=${language}&text=${text}`)
       .then(response => {
-        this.translatedText = response.body.text[0];  
+        this.translatedText = response.body.text[0];
       })
       .catch(() => {
         this.isError = true;
@@ -39,7 +37,7 @@ export default {
       this.translatedText = errorText;
     }
   }
-};
+}
 </script>
 
 <style>

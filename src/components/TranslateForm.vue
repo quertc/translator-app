@@ -1,5 +1,5 @@
 <template>
-  <div>   
+  <div>
     <form class="form" @submit.prevent="$emit('form-submit', textToTranslate, language)">
       <textarea class="form__textarea" v-model.trim="textToTranslate" placeholder="Enter text" required></textarea>
       <select class="form__select" v-model="language" required>
@@ -14,13 +14,11 @@
 <script>
 export default {
   name: 'TranslateForm',
-  data() {
-    return {
-      textToTranslate: '',
-      availableLanguages: {},
-      language: ''
-    };
-  },
+  data: () => ({
+    textToTranslate: '',
+    availableLanguages: {},
+    language: ''
+  }),
   created() {
     this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${process.env.VUE_APP_SECRET}&ui=en`)
     .then(response => {
@@ -28,9 +26,9 @@ export default {
     })
     .catch(() => {
       this.$emit('show-error', 'An error occurred while searching for available languages. Details in the browser console.');
-    })
+    });
   }
-};
+}
 </script>
 
 <style scoped>
