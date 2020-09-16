@@ -1,94 +1,130 @@
 <template>
-  <div>
-    <form class="form" @submit.prevent="$emit('form-submit', textToTranslate, language)">
-      <textarea class="form__textarea" v-model.trim="textToTranslate" placeholder="Enter text" required></textarea>
-      <select class="form__select" v-model="language" required>
-        <option value="" disabled>Select a language</option>
-        <option v-for="(language, code, index) of availableLanguages" :value="code" :key="index">{{ language }}</option>
+  <div class="container">
+    <form
+      class="form container__form"
+      @submit.prevent="$emit('form-submit', textToTranslate, selectedLanguage)"
+    >
+      <textarea
+        v-model.trim="textToTranslate"
+        placeholder="Enter text"
+        class="form__textarea"
+      />
+      <select
+        v-model="selectedLanguage"
+        class="form__select"
+      >
+        <option
+          value=""
+          disabled
+        >
+          Select a language
+        </option>
+        <option
+          v-for="(language, code, index) of availableLanguages"
+          :key="index"
+          :value="code"
+        >
+          {{ language }}
+        </option>
       </select>
-      <input class="form__submit" type="submit" value="Translate">
+      <input
+        :disabled="isDisabled"
+        type="submit"
+        value="Translate"
+        class="form__submit"
+        :class="{ form__submit_disabled: isDisabled }"
+      >
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TranslateForm',
-  data: () => ({
-    textToTranslate: '',
-    availableLanguages: {},
-    language: ''
-  }),
-  created() {
+  data() {
+    return {
+      textToTranslate: '',
+      availableLanguages: {},
+      selectedLanguage: '',
+    };
+  },
+  computed: {
+    isDisabled() {
+      return !(this.textToTranslate && this.selectedLanguage);
+    },
+  },
+  mounted() {
     this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${process.env.VUE_APP_SECRET}&ui=en`)
-    .then(response => {
-      this.availableLanguages = response.body.langs;
-    })
-    .catch(() => {
-      this.$emit('show-error', 'An error occurred while searching for available languages. Details in the browser console.');
-    });
-  }
-}
+      .then(response => {
+        this.availableLanguages = response.body.langs;
+      })
+      .catch(() => {
+        this.$emit('show-error', 'An error occurred while searching for available languages.');
+      });
+  },
+};
 </script>
 
 <style scoped>
 .form {
-  display: grid;
-  grid-gap: 12px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0.5rem 4rem rgba(0, 0, 0, 0.068);
+  display: flex;
+  flex-flow: column;
   padding: 25px;
-  border-radius: 7px;
-  transition: box-shadow 0.55s;
-  cursor: pointer;
+  transition: box-shadow .55s;
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .07);
+}
+
+.container__form {
+  margin-bottom: 45px;
 }
 
 .form:hover {
-  box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.088);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
 }
 
 .form__textarea {
   height: 30px;
-  line-height: 30px;
+  margin-bottom: 12px;
+  padding: 3px 6px;
   resize: vertical;
-  padding: 3px;
-  outline: none;
-  font-size: 0.9em;
-  border: none;
-  border-bottom: 1px solid rgb(63, 63, 63);
-  color: rgb(51, 51, 51);
+  border: 0;
+  border-bottom: 1px solid #3f3f3f;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 30px;
 }
 
 .form__textarea::placeholder {
-  color: rgb(54, 54, 54);
-  opacity: 0.9;
+  opacity: .9;
+  color: #363636;
 }
 
 .form__select {
-  text-align: center;
-  border: none;
-  cursor: pointer;
+  margin-bottom: 12px;
   padding: 5px;
-  outline: none;
-  color: rgb(51, 51, 51);
+  cursor: pointer;
+  text-align: center;
+  border: 0;
 }
 
 .form__submit {
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color .48s, color .48s;
+  border: 1px solid #3f3f3f;
+  border-radius: 8px;
   background: none;
-  outline: none;
-  padding: 7.5px;
-  border: 1px solid rgb(63, 63, 63);
-  border-radius: 7.5px;
-  transition: background-color 0.48s, color 0.48s;
-  color: rgb(51, 51, 51);
+}
+
+.form__submit_disabled {
+  opacity: .88;
 }
 
 .form__submit:hover {
-  background-color: rgb(63, 63, 63);
-  color: rgb(255, 255, 255);
+  color: #fff;
+  background-color: #3f3f3f;
 }
 </style>

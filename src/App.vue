@@ -1,9 +1,21 @@
 <template>
   <div id="app">
-    <h1>Translator App</h1>
-    <h4>Powered by Vue.js and Yandex API</h4>
-    <TranslateForm @form-submit="translateText" @show-error="errorHandling"/>
-    <TranslateOutput :output-text="translatedText" :class="{error: isError}"/>
+    <div class="translator">
+      <h1 class="translator__title">
+        Translator App
+      </h1>
+      <h4 class="translator__description">
+        Powered by Vue.js and Yandex API
+      </h4>
+      <TranslateForm
+        @form-submit="translateText"
+        @show-error="errorHandling"
+      />
+      <TranslateOutput
+        :output-text="translatedText"
+        :class="{ 'translated-text_error': isError }"
+      />
+    </div>
   </div>
 </template>
 
@@ -15,56 +27,58 @@ export default {
   name: 'App',
   components: {
     TranslateForm,
-    TranslateOutput
+    TranslateOutput,
   },
-  data: () => ({
-    translatedText: '',
-    isError: false
-  }),
+  data() {
+    return {
+      translatedText: '',
+      isError: false,
+    };
+  },
   methods: {
     translateText(text, language) {
       this.$http.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${process.env.VUE_APP_SECRET}&lang=${language}&text=${text}`)
-      .then(response => {
-        this.translatedText = response.body.text[0];
-      })
-      .catch(() => {
-        this.isError = true;
-        this.translatedText = 'An error occurred while translating the text. Details in the browser console.';
-      });
+        .then(response => {
+          [this.translatedText] = response.body.text;
+        })
+        .catch(() => {
+          this.translatedText = 'An error occurred while translating the text.';
+          this.isError = true;
+        });
     },
     errorHandling(errorText) {
-      this.isError = true;
       this.translatedText = errorText;
-    }
-  }
-}
+      this.isError = true;
+    },
+  },
+};
 </script>
 
 <style>
 * {
+  color: #333;
   font-family: Montserrat, Arial, sans-serif;
 }
 
 #app {
-  display: grid;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-h1 {
+.translator {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.translator__title {
   margin-bottom: 0;
-  font-size: 1.4em;
-  color: rgb(51, 51, 51);
+  font-size: 22px;
 }
 
-h4 {
-  margin-top: 10px;
-  margin-bottom: 26px;
-  font-size: 0.9em;
-  color: rgb(51, 51, 51);
+.translator__description {
+  margin: 10px 0 26px 0;
+  font-size: 15px;
   font-weight: 400;
-}
-
-#app .error {
-  color: rgb(240, 0, 0);
 }
 </style>

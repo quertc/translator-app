@@ -1,26 +1,27 @@
 <template>
-  <span class="translatedText">{{ outputText }}</span>
+  <span class="translated-text">{{ outputText }}</span>
 </template>
 
 <script>
 export default {
-  name: 'TranslateOutput',
   props: {
     outputText: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
-.translatedText {
-  text-align: center;
+.translated-text {
   max-width: 768px;
   padding: 0 2px 0 2px;
-  margin-top: 45px;
+  text-align: center;
   word-wrap: break-word;
-  color: rgb(51, 51, 51);
+}
+
+.translated-text_error {
+  color: #f00000;
 }
 </style>
