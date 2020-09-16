@@ -1,6 +1,6 @@
 # Simple translator app
 
-![Screenshot](https://github.com/quertc/translator-app/blob/master/preview.PNG)
+![Screenshot](https://github.com/quertc/translator-app/blob/master/preview.png)
 
 ## Description
 
