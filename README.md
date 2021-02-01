@@ -4,7 +4,7 @@
 
 ## Description
 
-This app is made on Vue.js 2.  
+This app is made on Vue.js 2.0.  
 **The app works using the [Yandex Translate API](https://yandex.ru/dev/translate/).**
 
 ### Installing
