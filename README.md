@@ -1,11 +1,10 @@
-# Simple translator app
+# Simple translator application
 
 ![Screenshot](https://github.com/quertc/translator-app/blob/master/preview.png)
 
 ## Description
 
-This app is made on Vue.js 2.0.  
-**The app works using the [Yandex Translate API](https://yandex.ru/dev/translate/).**
+Application made with Vue.js 2.0 using [Yandex Translate API](https://yandex.ru/dev/translate/).
 
 ### Installing
 
@@ -35,7 +34,7 @@ npm run build
 npm run lint
 ```
 
-_For the app to work correctly, don't forget to create a .env.local file with the [Yandex Translate API](https://translate.yandex.ru/developers/keys) secret key. Format:_
+_For the application to work correctly, don't forget to create a .env.local file with [Yandex Translate API](https://translate.yandex.ru/developers/keys) secret key. Format:_
 
 ```env
 VUE_APP_SECRET = yourapikey
